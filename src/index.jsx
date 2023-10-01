@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { routesConfig } from "./routes.jsx";
@@ -15,13 +16,14 @@ Root of react site
 const router = createBrowserRouter(routesConfig);
 
 // Render the site https://reactjs.org/docs/react-dom.html#render
-ReactDOM.render(
+
+const root = createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <HelmetProvider>
       <RouterProvider router={router} />
     </HelmetProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
 // Hot Module Replacement (HMR) - Remove this snippet to remove HMR.

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TodoCard from "../TodoCard";
 import styled from "styled-components";
 import getResource from "../../utils/api";
-import { skeletonAnimation, skeletonElement } from "../../utils/common-styles";
+import { skeletonAnimation, skeletonElement } from "../../common/common-styles";
 
 const StyledTodoList = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const SkeletonStyledTodoList = styled(StyledTodoList)`
   ${skeletonAnimation}
   .todo-card-skeleton {
     width: 250px;
-    height: 100px;
+    height: 60px;
     ${skeletonElement}
   }
 `;
@@ -39,7 +39,9 @@ const TodoList = () => {
     if (isLoading) {
       return (
         <SkeletonStyledTodoList>
-          {Array(25).fill(<div className="todo-card-skeleton"></div>)}
+          {Array.from(Array(25), (_, i) => (
+            <div key={i} className="todo-card-skeleton"></div>
+          ))}
         </SkeletonStyledTodoList>
       );
     } else {
@@ -69,6 +71,8 @@ const TodoList = () => {
           type="text"
           value={filter}
           placeholder="Filter..."
+          name="filter"
+          data-testid="filter"
           onChange={(event) => setFilter(event.target.value)}
         ></input>
       </>

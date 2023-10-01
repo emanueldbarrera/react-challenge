@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import getResource from "../../utils/api";
-import { skeletonAnimation, skeletonElement } from "../../utils/common-styles";
+import { skeletonAnimation, skeletonElement } from "../../common/common-styles";
 
 const StyledTodoDetail = styled.div`
-  span {
+  .item-number-label {
     font-weight: bold;
   }
 `;
@@ -46,11 +46,11 @@ const TodoDetail = () => {
   if (isLoading) {
     return (
       <SkeletonStyledTodoDetail>
-        {Array(3).fill(
-          <div>
+        {Array.from(Array(3), (_, i) => (
+          <div key={i}>
             <span></span>
           </div>
-        )}
+        ))}
       </SkeletonStyledTodoDetail>
     );
   }
