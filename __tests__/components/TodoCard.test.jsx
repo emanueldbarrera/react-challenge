@@ -10,7 +10,7 @@ describe("TodoCard success case", async () => {
       id: 1,
       completed: true,
     };
-    // Creater router context so that TodoCard can be rendered
+    // Create router context so that TodoCard can be rendered
     const router = createMemoryRouter(
       [
         {

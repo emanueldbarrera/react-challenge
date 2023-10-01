@@ -2,7 +2,6 @@ import { describe, expect, test, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
-
 import { routesConfig } from "../src/routes";
 
 describe("App render test with react-router", () => {
